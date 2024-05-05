@@ -1,26 +1,12 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <math.h>
 
-#include <fstream> //для удобного ввода массива из файла
-#include <string> //также для удобного ввода массива
-//Напишите программу для поиска k-го наименьшего элемента в массиве с помощью алгоритмов МИНК и МИНСК.
-//Определите, какой из алгоритмов оказывается эффективнее для различных длин массива и различных k.
+#include <fstream> //Г¤Г«Гї ГіГ¤Г®ГЎГ­Г®ГЈГ® ГўГўГ®Г¤Г  Г¬Г Г±Г±ГЁГўГ  ГЁГ§ ГґГ Г©Г«Г 
+#include <string> //ГІГ ГЄГ¦ГҐ Г¤Г«Гї ГіГ¤Г®ГЎГ­Г®ГЈГ® ГўГўГ®Г¤Г  Г¬Г Г±Г±ГЁГўГ 
+//ГЌГ ГЇГЁГёГЁГІГҐ ГЇГ°Г®ГЈГ°Г Г¬Г¬Гі Г¤Г«Гї ГЇГ®ГЁГ±ГЄГ  k-ГЈГ® Г­Г ГЁГ¬ГҐГ­ГјГёГҐГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ  Гў Г¬Г Г±Г±ГЁГўГҐ Г± ГЇГ®Г¬Г®Г№ГјГѕ Г Г«ГЈГ®Г°ГЁГІГ¬Г®Гў ГЊГ€ГЌГЉ ГЁ ГЊГ€ГЌГ‘ГЉ.
+//ГЋГЇГ°ГҐГ¤ГҐГ«ГЁГІГҐ, ГЄГ ГЄГ®Г© ГЁГ§ Г Г«ГЈГ®Г°ГЁГІГ¬Г®Гў Г®ГЄГ Г§Г»ГўГ ГҐГІГ±Гї ГЅГґГґГҐГЄГІГЁГўГ­ГҐГҐ Г¤Г«Гї Г°Г Г§Г«ГЁГ·Г­Г»Гµ Г¤Г«ГЁГ­ Г¬Г Г±Г±ГЁГўГ  ГЁ Г°Г Г§Г«ГЁГ·Г­Г»Гµ k.
 
-int sizeOfArray(int* arr)
-{
-	std::cout << typeid(sizeof(arr) / sizeof(*arr)).name();
-	return (sizeof(arr) / sizeof(*arr));
-}
-
-int MINK(int* arr, int k1)
-{
-	return 0;
-}
-
-int MINSK()
-{
-	return 0;
-}
+#include "array.h"
 
 int calculateSizeArray()
 {
@@ -59,18 +45,33 @@ int calculateSizeArray()
 
 }
 
-void printArray(int* arr, int size1)
+int MINK(Array& array, int k)
 {
-	int size = sizeOfArray(arr);
-	for (int i = 0; i < size; i++)
-		std::cout << arr[i] << " ";
-	std::cout << std::endl;
+	//Step 1. Р Р°Р·Р±РёС‚СЊ РјР°СЃСЃРёРІ РЅР° РїСЏС‚РµСЂРєРё
+
+	int countOfNumbers = array.size();
+	int countOfArrays = countOfNumbers / 5;
+	int** listOfArrays = new int* [countOfArrays];
+	int index = 0;
+	for (int i = 0; i < countOfArrays; i++)
+	{
+		if (countOfNumbers > 5)
+		int* arr = new int[5];
+		for ()
+	}
+
+	return 0;
+}
+
+int MINSK(Array& array, int k)
+{
+	return 0;
 }
 
 int main()
 {
-	int sizeArray = calculateSizeArray();
-	int* array = new int[sizeArray];
+	int newSize = calculateSizeArray();
+	int* arr = new int[newSize];
 
 	std::ifstream file("input.txt");
 	if (!file.is_open())
@@ -79,11 +80,13 @@ int main()
 		exit(EXIT_FAILURE);
 	}
 
-	for (int i = 0; i < sizeArray; i++)
-		file >> array[i];	
+	for (int i = 0; i < newSize; i++)
+		file >> arr[i];
 
 	file.close();
-	
+
+	Array array(newSize, arr);
+
 	int k_num = 0;
 
 	std::cout << "Enter positive k: ";
@@ -96,8 +99,8 @@ int main()
 		std::cout << std::endl;
 	}
 
-	printArray(array, sizeArray);
-
-	delete [] array;
+	std::cout << array << std::endl;
+	
+	delete[] arr;
 	return 0;
 }
