@@ -17,7 +17,7 @@ public:
 
 	int& size();
 	int* data();
-	int& operator[](int& index);
+	int& operator[](int index);
 
 	void push_back(int number);
 

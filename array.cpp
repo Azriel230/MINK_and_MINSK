@@ -84,7 +84,7 @@ int* Array::data()
 	return m_data;
 }
 
-int& Array::operator[](int& index)
+int& Array::operator[](int index)
 {
 	if (index < 0 || index > m_size)
 	{
