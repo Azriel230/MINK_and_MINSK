@@ -128,10 +128,4 @@ void Array::push_back(int number)
 
 	m_data[m_size] = number;
 	m_size = m_size + 1;
-
-	//m_data = new int[m_size + 1];
-	//for (int i = 0; i < m_size; i++)
-	//	m_data[i] = newArray[i];
-
-	//delete[] newArray;
 }

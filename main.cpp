@@ -10,7 +10,7 @@
 
 #include "array.h"
 
-//#define DEBUG
+#define DEBUG
 
 int calculateSizeArray()
 {
@@ -36,12 +36,6 @@ int calculateSizeArray()
 		if (str[i] == ' ')
 			size++;
 	}
-
-	//if (size == 0)
-	//{
-	//	std::cout << "Error! System size is 0!";
-	//	exit(EXIT_FAILURE);
-	//}
 
 	file.close();
 
@@ -148,7 +142,6 @@ int MINK(Array& array, int k)
 	std::cout << "Median_array = " << median_arr << std::endl;
 #endif
 	//Step 4. »щем медиану /*M. m = MINK(M, n/10)*/. ƒл€ этого мы сортируем массив медиан и выбираем нужное число
-	//int median_true = MINK(median_arr, countOfNumbers / (parts*2)); //parts = 5; 5*2=10. math!
 	int median_true = 0;
 	bubbleSort(median_arr.data(), countOfArrays);
 	int index_for_median_true = countOfNumbers / (parts * 2);
@@ -239,13 +232,13 @@ int MINSK(Array& array, int k)
 #endif
 	//Step 6. ѕроверка условий и выполнение нужного действи€
 	if (k <= numbers_less.size())
-		return MINK(numbers_less, k);
+		return MINSK(numbers_less, k);
 	else if (k > numbers_less.size() && k <= (numbers_less.size() + numbers_equal.size()))
 	{
 		return median_true;
 	}
 	else if (k > (numbers_less.size() + numbers_equal.size()))
-		return MINK(numbers_larger, k - numbers_less.size() - numbers_equal.size());
+		return MINSK(numbers_larger, k - numbers_less.size() - numbers_equal.size());
 }
 
 Array generateArray(int size, int maxRandom)
@@ -290,7 +283,7 @@ void test()
 			unsigned int timeTotal_MINSK = timeEnd - timeStart;
 			
 			std::cout << "k = " << k << " mink = " << mink << " minsk = " << minsk << " time mink = " << timeTotal_MINK << " time minsk = " << timeTotal_MINSK << std::endl;
-			file << "k = " << k << "	time mink | time minsk =  " << timeTotal_MINK << " | " << timeTotal_MINSK << "\n";
+			file << "k = " << k << "time mink | time minsk =  " << timeTotal_MINK << " | " << timeTotal_MINSK << "\n";
 		}
 	}
 
@@ -350,19 +343,12 @@ void workTest()
 	std::cout << "MINK time = " << timeTotal_MINK << std::endl;
 	std::cout << "MINSK time = " << timeTotal_MINSK << std::endl;
 
-	//std::cout << array << std::endl;
-
-	//bubbleSort(array.data(), array.size());
-
-	//std::cout << "Sorted: " << array << std::endl;
-
 	delete[] arr;
 }
 
 int main()
 {
 	workTest();
-	
 	//test();
 
 	return 0;
